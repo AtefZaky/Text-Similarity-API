@@ -23,7 +23,7 @@ interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
   VariantProps<typeof HeadingVariants>{}
 
-const Paragraph = forwardRef<HTMLHeadingElement, HeadingProps>(({
+const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(({
   className, size, children, ...props
 }, ref) => {
   return(
@@ -33,6 +33,6 @@ const Paragraph = forwardRef<HTMLHeadingElement, HeadingProps>(({
   )
 })
 
-Paragraph.displayName = 'Heading'
+Heading.displayName = 'Heading'
 
-export default Paragraph
+export default Heading
