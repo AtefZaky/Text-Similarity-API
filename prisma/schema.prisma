@@ -79,7 +79,7 @@ model ApiRequest {
   timestamp DateTime @default(now())
   method String
   path String
-  status Int 
+  status Int? 
   duration Int
 
   usedApiKey String
