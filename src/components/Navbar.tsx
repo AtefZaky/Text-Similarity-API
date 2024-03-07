@@ -5,7 +5,7 @@ import SigninButton from '@/components/SigninButton';
 import SignOutButton from '@/components/SignOutButton';
 import ThemeToggle from './ThemeToggle';
 import { authOptions } from '@/libs/auth';
-import MobileNav from './MobileNav';
+import ProfileDropdown from '@/components/ProfileDropdown';
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
@@ -17,23 +17,28 @@ const Navbar = async () => {
         </Link>
         <div className='md:hidden flex items-center gap-2'>
           <ThemeToggle />
-          <MobileNav session={session} />
+            <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
+              Docs
+            </Link>
+          <ProfileDropdown session={session} />
         </div>
         <div className='hidden md:flex gap-4'>
           <ThemeToggle />
-          <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
-            Documentation
-          </Link>
           {session ? (
             <>
-              <Link 
-                className={ButtonVariants({ variant: 'ghost'})}
-                href='/dashboard'>
-                  Dashboard
+              <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
+                Documentation
               </Link>
-              <SignOutButton />
+              <ProfileDropdown session={session}/>
             </>
-          ) : <SigninButton />} 
+          ) : (
+            <>
+              <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
+                Documentation
+              </Link>
+              <SigninButton />
+            </>
+          )} 
         </div>
       </div>
     </div>

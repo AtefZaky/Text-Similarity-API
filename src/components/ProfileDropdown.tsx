@@ -12,11 +12,11 @@ import { toast } from '@/ui/Toast'
 import SigninButton from '@/components/SigninButton'
 import { useRouter } from 'next/navigation'
 
-interface MobileNavProps {
+interface ProfileDropdownProps {
   session: Session | null
 }
 
-const MobileNav: FC<MobileNavProps> = ({session}) => {
+const ProfileDropdown: FC<ProfileDropdownProps> = ({session}) => {
   const router = useRouter()
 
   const signUserOut = async () => {
@@ -34,13 +34,10 @@ const MobileNav: FC<MobileNavProps> = ({session}) => {
     <>
       {session ? (
         <>
-          <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
-            Docs.
-          </Link>
           <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant='ghost' size='sm'>
-              <Image src={session?.user.image!} alt='user-image' width={25} height={25}/>
+              <Image src={session?.user.image!} alt='user-image' width={25} height={25} className='md:h-8 md:w-8'/>
               <Icons.ChevronDown width={20} height={20} className=' pl-1'/>
             </Button>
           </DropdownMenuTrigger>
@@ -59,9 +56,6 @@ const MobileNav: FC<MobileNavProps> = ({session}) => {
       </>
       ) :(
         <>
-          <Link href='/documentation' className={ButtonVariants({ variant: 'ghost' })}>
-              Docs.
-          </Link>
           <SigninButton />
         </>
       )}
@@ -70,4 +64,4 @@ const MobileNav: FC<MobileNavProps> = ({session}) => {
   )
 }
 
-export default MobileNav
+export default ProfileDropdown
