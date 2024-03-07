@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import GoogleProvider from 'next-auth/providers/google';
 
-const getGoogleCredentials = () =>{
+const getGoogleCredentials = () : {clientId: string, clientSecret: string} =>{
   const clientId = process.env.GOOGLE_CLIENT_ID
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET
   if (!clientId || clientId.length === 0){
@@ -16,6 +16,7 @@ const getGoogleCredentials = () =>{
 }
 
 export const authOptions: NextAuthOptions ={
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(db),
   session: {
     strategy: 'jwt'

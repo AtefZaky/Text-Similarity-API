@@ -6,11 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import Button from '@/ui/Button'
 import Icons from '@/components/Icons';
 
-interface ThemeToggleProps {
-  
-}
-
-const ThemeToggle: FC<ThemeToggleProps> = ({}) => {
+const ThemeToggle: FC = () => {
 
   const { setTheme } = useTheme()
   return (
